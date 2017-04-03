@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import fr.masciulli.drinks.R;
 import fr.masciulli.drinks.ui.fragment.DrinksFragment;
 import fr.masciulli.drinks.ui.fragment.LiquorsFragment;
+import com.mechdome.aboutmechdome.AboutMechDomeActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final int POSITION_DRINKS = 0;
@@ -81,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_licenses:
                 openLicenses();
                 return true;
+            case R.id.action_mechdome:
+                openMechDomeAbout();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -93,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
     private void openAbout() {
         startActivity(new Intent(this, AboutActivity.class));
     }
+
+    private void openMechDomeAbout() { startActivity(new Intent(this, AboutMechDomeActivity.class)); }
 
 
     private void sendFeedback() {

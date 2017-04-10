@@ -13,10 +13,6 @@ An ultra simple app for making cocktails.
 ./gradlew build
 ```
 
-# Where's the data from ?
-All text content is taken (and sometimes adapted) from [Wikipedia](https://en.wikipedia.org), in compliance with the CC BY-SA 3.0 license.
-The data is exposed by an [App Engine](https://cloud.google.com/appengine/) server which code is not open source.
-
 License
 =======
 

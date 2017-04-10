@@ -70,10 +70,7 @@ public class LiquorsFragment extends Fragment implements ItemClickListener<Liquo
 
     private void loadLiquors() {
         displayLoadingState();
-        client.getLiquors()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onLiquorsRetrieved, this::onError);
+        this.onLiquorsRetrieved(client.getLiquors());
     }
 
     private void onError(Throwable throwable) {
@@ -82,6 +79,10 @@ public class LiquorsFragment extends Fragment implements ItemClickListener<Liquo
     }
 
     private void onLiquorsRetrieved(List<Liquor> liquors) {
+        if (liquors == null) {
+            displayErrorState();
+            return;
+        }
         adapter.setLiquors(liquors);
         displayNormalState();
     }
@@ -108,15 +109,15 @@ public class LiquorsFragment extends Fragment implements ItemClickListener<Liquo
     public void onItemClick(int position, Liquor liquor) {
         Intent intent = new Intent(getActivity(), LiquorActivity.class);
         intent.putExtra(LiquorActivity.EXTRA_LIQUOR, liquor);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            TileViewHolder holder = (TileViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
-            String transition = getString(R.string.transition_liquor);
-            ActivityOptions options = ActivityOptions
-                    .makeSceneTransitionAnimation(getActivity(), holder.getImageView(), transition);
-            startActivity(intent, options.toBundle());
-        } else {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            TileViewHolder holder = (TileViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
+//            String transition = getString(R.string.transition_liquor);
+//            ActivityOptions options = ActivityOptions
+//                    .makeSceneTransitionAnimation(getActivity(), holder.getImageView(), transition);
+//            startActivity(intent, options.toBundle());
+//        } else {
             startActivity(intent);
-        }
+//        }
     }
 
     @Override

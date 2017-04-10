@@ -79,13 +79,14 @@ public class DrinksFragment extends Fragment implements SearchView.OnQueryTextLi
 
     private void loadDrinks() {
         displayLoadingState();
-        client.getDrinks()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::onDrinksRetrieved, this::onError);
+        this.onDrinksRetrieved(client.getDrinks());
     }
 
     private void onDrinksRetrieved(List<Drink> drinks) {
+        if (drinks == null) {
+            displayErrorState();
+            return;
+        }
         adapter.setDrinks(drinks);
         displayNormalState();
     }

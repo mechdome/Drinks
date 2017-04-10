@@ -44,12 +44,7 @@ public class ClientTest {
     public void testThatDrinksAreRetrievedCorrectly() throws IOException {
         enqueueServerResponse(FILE_DRINKS);
 
-        TestSubscriber<List<Drink>> subscriber = new TestSubscriber<>();
-        client.getDrinks().subscribe(subscriber);
-
-        subscriber.assertNoErrors();
-
-        List<Drink> drinks = subscriber.getOnNextEvents().get(0);
+        List<Drink> drinks = client.getDrinks();
         assertThat(drinks.size()).isEqualTo(SIZE_DRINKS);
     }
 
@@ -57,12 +52,7 @@ public class ClientTest {
     public void testThatLiquorsAreRetrievedCorrectly() throws IOException {
         enqueueServerResponse(FILE_LIQUORS);
 
-        TestSubscriber<List<Liquor>> subscriber = new TestSubscriber<>();
-        client.getLiquors().subscribe(subscriber);
-
-        subscriber.assertNoErrors();
-
-        List<Liquor> liquors = subscriber.getOnNextEvents().get(0);
+        List<Liquor> liquors = client.getLiquors();
         assertThat(liquors.size()).isEqualTo(SIZE_LIQUORS);
     }
 

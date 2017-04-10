@@ -26,13 +26,14 @@ import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class LiquorActivity extends AppCompatActivity {
     private static final String TAG = LiquorActivity.class.getSimpleName();
 
-    private static final boolean TRANSITIONS_AVAILABLE = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
+    private static final boolean TRANSITIONS_AVAILABLE = false;//Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
     public static final String EXTRA_LIQUOR = "extra_liquor";
     private static final String STATE_DRINKS = "state_drinks";
 
@@ -111,14 +112,15 @@ public class LiquorActivity extends AppCompatActivity {
     }
 
     private void loadDrinks() {
-        client.getDrinks()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnError(this::onError)
-                .flatMap(Observable::from)
-                .filter(this::matches)
-                .toList()
-                .subscribe(this::onDrinksRetrieved);
+        List<Drink> allDrinks = client.getDrinks();
+
+        List<Drink> drinks = new ArrayList<>();
+        for (Drink drink : allDrinks) {
+            if (matches(drink)) {
+                drinks.add(drink);
+            }
+        }
+        this.onDrinksRetrieved(drinks);
     }
 
     private void onError(Throwable throwable) {

@@ -43,7 +43,8 @@
 
         <activity
             android:name=".ui.activity.AboutActivity"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" />
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"
+            />
 
         <activity
             android:name=".ui.activity.LicensesActivity"
@@ -53,7 +54,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.activity.MainActivity" />
         </activity>
-
+        <meta-data android:name="md_remove_ads" android:value="fr.masciulli.drinks.MechDomeAd" />
     </application>
 
 </manifest>

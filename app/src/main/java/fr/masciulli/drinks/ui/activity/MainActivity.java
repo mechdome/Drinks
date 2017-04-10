@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_about:
                 openAbout();
                 return true;
-            case R.id.action_feedback:
-                sendFeedback();
-                return true;
+//            case R.id.action_feedback:
+//                sendFeedback();
+//                return true;
             case R.id.action_licenses:
                 openLicenses();
                 return true;

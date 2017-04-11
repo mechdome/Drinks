@@ -4,6 +4,7 @@ Drinks
 An ultra simple app for making cocktails.
 
 ![Screenshot](website/screenshot.png)
+![Screenshot](website/md_drinks.png)
 
 [![Drinks on Play Store](website/badge_googleplay.png)](https://play.google.com/store/apps/details?id=fr.masciulli.drinks)
 [![Drinks on F-Droid](website/badge_fdroid.png)](https://f-droid.org/repository/browse/?fdfilter=drinks&fdid=fr.masciulli.drinks)

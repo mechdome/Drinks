@@ -2,8 +2,11 @@ Drinks
 ======
 
 An ultra simple app for making cocktails.
+<a href="https://itunes.apple.com/us/app/drinks-liquors/id1223240483?mt=8"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Available_on_the_App_Store_%28black%29.png" width="150"></a>
+
 
 ![Screenshot](website/md_drinks.png)
+
 
 # How to build
 ```

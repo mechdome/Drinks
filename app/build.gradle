@@ -34,6 +34,18 @@ android {
     lintOptions {
         lintConfig file('../gradle/lint.xml')
     }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
 }
 
 task checkstyle(type: Checkstyle) {
@@ -72,9 +84,5 @@ dependencies {
     testCompile 'org.mockito:mockito-core:1.9.5'
     testCompile 'com.squareup.okhttp3:mockwebserver:3.4.1'
     testCompile 'com.squareup.assertj:assertj-android:1.1.1'
-    compile 'com.google.firebase:firebase-core:11.2.0'
-    compile 'com.google.firebase:firebase-ads:11.2.0'
     compile 'com.mechdome:MechDome-About:+'
 }
-
-apply plugin: 'com.google.gms.google-services'
